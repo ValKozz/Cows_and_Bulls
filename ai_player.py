@@ -22,14 +22,19 @@ class AIGame(GameMath):
     def take_input(self):
         cow_input = input('Enter cows: ')
         bull_input = input('Enter Bulls: ')
+        try:
+            new_cows = int(cow_input)
+            new_bulls = int(bull_input)
+        except ValueError:
+            print('Invalid input!')
+            return self.take_input()
 
-        if int(cow_input) < 5 and int(bull_input) < 5:
-            if cow_input.isnumeric() and bull_input.isnumeric():
-                self.cows, self.bulls = int(cow_input), int(bull_input)
-                return
+        if new_cows < 5 and new_bulls < 5:
+            self.cows, self.bulls = int(cow_input), int(bull_input)
+            return
         else:
             print('Invalid input!')
-            self.take_input()
+            return self.take_input()
 
     def generate_new(self):
         self.possible_list = []
@@ -54,12 +59,14 @@ class AIGame(GameMath):
 
             if new_cows == cows and new_bulls == bulls:
                 clean_list.append(item)
-
         self.possible_list = clean_list
         return self.possible_list
 
     def make_pick(self):
-        self.node = random.choice(self.possible_list)
+        try:
+            self.node = random.choice(self.possible_list)
+        except IndexError:
+            print('Maybe you made a mistake? Conflicting results, no possible numbers left in sequence.')
         self.possible_list.remove(self.node)
 
     def game(self):
@@ -83,5 +90,3 @@ class AIGame(GameMath):
                 self.make_pick()
         if self.bulls == 4:
             return self.node, self.tries, self.possible_list
-
-
