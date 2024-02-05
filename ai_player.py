@@ -16,7 +16,7 @@ class AIGame(GameMath):
         self.tries = 0
 
     def display(self):
-        print(f'Guess: {self.node}')
+        print(f'\nMy best guess is: {self.node}')
         self.take_input()
 
     def take_input(self):
@@ -66,9 +66,11 @@ class AIGame(GameMath):
         while self.bulls < 4:
             self.tries += 1
             self.display()
-            self.keep(self.node, self.bulls, self.cows)
-            self.make_pick()
-        self.display()
+
+            if self.bulls < 4:
+                self.keep(self.node, self.bulls, self.cows)
+                self.make_pick()
+
         print(f'My last guess is: {self.node}')
         print(f'Succeeded in {self.tries} tries.')
 

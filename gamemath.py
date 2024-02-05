@@ -23,6 +23,6 @@ class GameMath:
             elif guess[i] in answer and guess[i] != answer[i]:
                 self.cows += 1
         if to_display:
-            print(f'Cows: {self.cows}    Bulls: {self.bulls}')
+            print(f'Cows: {self.cows}    Bulls: {self.bulls}\n')
         score = (self.cows, self.bulls)
         return score

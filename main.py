@@ -46,7 +46,10 @@ if __name__ == '__main__':
     print('''Cow and Bull by Valeri Kozarev - @ValKozz.
     The game is played by making up a secret number, consisting of four different digits. The opponent must in return
     guess them. If the guess contains a number that is present in the answer, the opposing player must say if it's either a 
-    bull or a cow. Cows are numbers in the wrong place and Bulls, numbers in the proper position.''')
+    bull or a cow. Cows are numbers in the wrong place and Bulls, numbers in the proper position.
+    c - The computer tries to guess your number.
+    p - You try and guess the number the computer has generated.
+    test - Run tests, will create a tests.txt file in the directory of the game.''')
 
     def ask_player():
         mode = input('Player or CPU guesses? (p/c)\n').lower()
